@@ -115,8 +115,13 @@ class juegoAhorcado:
         print(self.ESTADOS[len(letras_incorrectas)])
         print('La categoría es: FRUTAS')
         print()
+        print()
+
+        intentos_restantes = self.obtener_intentos_restantes(letras_incorrectas)
+        print(f"Te quedan {intentos_restantes} intentos antes de perder la partida.")
 
         print('Letras incorrectas: ', end='')
+
         for letra in letras_incorrectas:
             print(letra, end=' ')
         if len(letras_incorrectas) == 0:
@@ -149,6 +154,9 @@ class juegoAhorcado:
                 print('Introduce una LETRA.')
             else:
                 return adivina
+
+    def obtener_intentos_restantes(self, letras_incorrectas):
+        return len(self.ESTADOS) - 1 - len(letras_incorrectas)
 
 
 if __name__ == '__main__':
