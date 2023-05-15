@@ -74,16 +74,23 @@ class juegoAhorcado:
         'CEREZA CIRUELA FRESA GRANADA HIGO LIMA LIMON MANDARINA ' \
         'NARANJA MELON MORA NISPERO PIÑA POMELO SANDIA '.split()
 
+    palabra_secreta = random.choice(lista_frutas)
+
     def jugar(self):
 
         letras_incorrectas = []
         letras_correctas = []
-        palabra_secreta = random.choice(self.lista_frutas)
+        palabra_secreta = self.palabra_secreta
 
         while True:
             self.dibujar(letras_incorrectas, letras_correctas, palabra_secreta)
 
             nueva_letra = self.introduce_letra(letras_incorrectas + letras_correctas)
+
+            if nueva_letra == "TERMINAR":
+                print(self.ESTADOS[-1])
+                print("La palabra era: " + palabra_secreta)
+                break
 
             if nueva_letra in palabra_secreta:
 
@@ -139,7 +146,9 @@ class juegoAhorcado:
         while True:
             print('Adivina una letra.')
             adivina = input('> ').upper()
-            if len(adivina) != 1:
+            if adivina == "TERMINAR":
+                return adivina
+            elif len(adivina) != 1:
                 print('Introduce una única letra.')
             elif adivina in fletra:
                 print('Esa letra ya la sabías. Elige otra vez.')
