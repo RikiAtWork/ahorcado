@@ -69,18 +69,30 @@ class juegoAhorcado:
          |  |
         / \ |
         ====="""]
-
+    categoria = ['FRUTA', 'ANIMALES', 'COLORES']
     lista_frutas = 'PERA PLATANO UVA MANZANA MELOCOTON KIWI ALBARICOQUE ' \
         'CEREZA CIRUELA FRESA GRANADA HIGO LIMA LIMON MANDARINA ' \
         'NARANJA MELON MORA NISPERO PIÑA POMELO SANDIA '.split()
 
+    lista_animales = ['LEON', 'TIGRE', 'ELEFANTE', 'JIRAFA', 'CANGURO']
+    lista_colores = ['ROJO', 'VERDE', 'AZUL', 'AMARILLO', 'NARANJA']
+
     palabra_secreta = random.choice(lista_frutas)
+
+    cat_seleccionada = random.choice(categoria)
 
     def jugar(self):
 
         letras_incorrectas = []
         letras_correctas = []
-        palabra_secreta = self.palabra_secreta
+        palabra_secreta = ""
+
+        if self.cat_seleccionada == "FRUTAS":
+            palabra_secreta = random.choice(self.lista_frutas)
+        elif self.cat_seleccionada == "ANIMALES":
+            palabra_secreta = random.choice(self.lista_animales)
+        elif self.cat_seleccionada == "COLORES":
+            palabra_secreta = random.choice(self.lista_colores)
 
         while True:
             self.dibujar(letras_incorrectas, letras_correctas, palabra_secreta)
@@ -118,7 +130,7 @@ class juegoAhorcado:
 
     def dibujar(self, letras_incorrectas, letras_correctas, secreto):
         print(self.ESTADOS[len(letras_incorrectas)])
-        print('La categoría es: FRUTAS')
+        print('La categoría es: ', self.cat_seleccionada)
         print()
 
         print('Letras incorrectas: ', end='')
