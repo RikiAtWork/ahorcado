@@ -80,7 +80,9 @@ class juegoAhorcado:
         letras_correctas = []
         palabra_secreta = random.choice(self.lista_frutas)
 
+        nombre = input("Introduce tu nombre: ")
         while True:
+
             self.dibujar(letras_incorrectas, letras_correctas, palabra_secreta)
 
             nueva_letra = self.introduce_letra(letras_incorrectas + letras_correctas)
@@ -97,7 +99,7 @@ class juegoAhorcado:
                 if ganar:
                     print(self.SALVADO[0])
                     print('¡Bien hecho! la palabra secreta es :', palabra_secreta)
-                    print('Has ganado!')
+                    print(f'Has ganado, {nombre}!')
                     break
 
             else:
