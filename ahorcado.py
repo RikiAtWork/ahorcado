@@ -94,7 +94,9 @@ class juegoAhorcado:
         elif self.cat_seleccionada == "COLORES":
             palabra_secreta = random.choice(self.lista_colores)
 
+        nombre = input("Introduce tu nombre: ")
         while True:
+
             self.dibujar(letras_incorrectas, letras_correctas, palabra_secreta)
 
             nueva_letra = self.introduce_letra(letras_incorrectas + letras_correctas)
@@ -116,7 +118,7 @@ class juegoAhorcado:
                 if ganar:
                     print(self.SALVADO[0])
                     print('¡Bien hecho! la palabra secreta es :', palabra_secreta)
-                    print('Has ganado!')
+                    print(f'Has ganado, {nombre}!')
                     break
 
             else:
@@ -132,8 +134,13 @@ class juegoAhorcado:
         print(self.ESTADOS[len(letras_incorrectas)])
         print('La categoría es: ', self.cat_seleccionada)
         print()
+        print()
+
+        intentos_restantes = self.obtener_intentos_restantes(letras_incorrectas)
+        print(f"Te quedan {intentos_restantes} intentos antes de perder la partida.")
 
         print('Letras incorrectas: ', end='')
+
         for letra in letras_incorrectas:
             print(letra, end=' ')
         if len(letras_incorrectas) == 0:
@@ -168,6 +175,9 @@ class juegoAhorcado:
                 print('Introduce una LETRA.')
             else:
                 return adivina
+
+    def obtener_intentos_restantes(self, letras_incorrectas):
+        return len(self.ESTADOS) - 1 - len(letras_incorrectas)
 
 
 if __name__ == '__main__':
