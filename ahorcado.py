@@ -70,9 +70,9 @@ class juegoAhorcado:
         / \ |
         ====="""]
     categoria = ['FRUTA', 'ANIMALES', 'COLORES']
-    lista_frutas = 'PERA PLATANO UVA MANZANA MELOCOTON KIWI ALBARICOQUE ' \
-        'CEREZA CIRUELA FRESA GRANADA HIGO LIMA LIMON MANDARINA ' \
-        'NARANJA MELON MORA NISPERO PIÑA POMELO SANDIA '.split()
+    lista_frutas = ['PERA', 'PLATANO', 'UVA', 'MANZANA', 'MELOCOTON', 'KIWI', 'ALBARICOQUE', 'CEREZA', 'CIRUELA',
+                    'FRESA', 'GRANADA', 'HIGO', 'LIMA', 'LIMON', 'MANDARINA', 'NARANJA', 'MELON', 'MORA', 'NISPERO',
+                    'PIÑA', 'POMELO', 'SANDIA']
 
     lista_animales = ['LEON', 'TIGRE', 'ELEFANTE', 'JIRAFA', 'CANGURO']
     lista_colores = ['ROJO', 'VERDE', 'AZUL', 'AMARILLO', 'NARANJA']
@@ -87,7 +87,7 @@ class juegoAhorcado:
         letras_correctas = []
         palabra_secreta = ""
 
-        if self.cat_seleccionada == "FRUTAS":
+        if self.cat_seleccionada == "FRUTA":
             palabra_secreta = random.choice(self.lista_frutas)
         elif self.cat_seleccionada == "ANIMALES":
             palabra_secreta = random.choice(self.lista_animales)
