@@ -1,7 +1,21 @@
+"""
+.. include:: ./README.md
+"""
+
 import random
 
 
 class juegoAhorcado:
+    """
+    Esta clase implementa un juego del ahorcado donde hay 3 categorias diferentes y tiene que adivinar
+    la letra de una palabra.
+    - **categoria**: lista de diferentes categorias.
+    - **estados**: los estados del ahorcado.
+    - **salvado**: el estado salvado del ahorcado.
+    - **lista_frutas**: lista de las frutaas.
+    - **lista_animales**: lista de animales.
+    - **lista_colores**: lista de colores.
+    """
     ESTADOS = [
         r"""
          +--+
@@ -82,7 +96,13 @@ class juegoAhorcado:
     cat_seleccionada = random.choice(categoria)
 
     def jugar(self):
+        """
+        Método que inicializa el juego, selecciona la categoría aleatoriamente y si la letra introducida se encuentra
+        en la palabra secreta se guarda en la lista de letras_correctas si no en la lista de incorrectas. Cuando la
+        lista de letras_incorrectas es igual muñeco colgado (número de intentos), para el bucle y muestra la palabra
+        secreta. Si la nueva letra es 'TERMINAR' se acaba el juego y muestra el muñeco colgado y la solución.
 
+        """
         letras_incorrectas = []
         letras_correctas = []
         palabra_secreta = ""
@@ -131,6 +151,17 @@ class juegoAhorcado:
                     break
 
     def dibujar(self, letras_incorrectas, letras_correctas, secreto):
+        """
+        Método que dibuja el ahorcado sin colgar y según vas fallando las letras se va dibujando el colgado del muñeco.
+        Se muestra el número de intentos cada vez que fallas y si aciertas se pone la letra correcta en los espacios
+        de la palabra secreta.
+
+
+        :param letras_incorrectas: char
+        :param letras_correctas: char
+        :param secreto: String
+
+        """
         print(self.ESTADOS[len(letras_incorrectas)])
         print('La categoría es: ', self.cat_seleccionada)
         print()
@@ -162,6 +193,15 @@ class juegoAhorcado:
 
     @staticmethod
     def introduce_letra(fletra):
+        """
+        Metodo que se le pasa un carácter que en el metodo de jugar() se le pasa como la combinacion de la lisa de
+        letras_correctas + letras_incorrectas. Después pide al usuario introducir una letra y realiza las
+        comprobaciones, si es correcto devuelve de la letra introducida. Si el usario pone TERMINAR se devuelve la
+        String de TERMINAR.
+
+        :param fletra: Char
+        :return: adivina
+        """
         while True:
             print('Adivina una letra.')
             adivina = input('> ').upper()
@@ -177,6 +217,12 @@ class juegoAhorcado:
                 return adivina
 
     def obtener_intentos_restantes(self, letras_incorrectas):
+        """
+        Metodo que devuelve el número de intentos restantes.
+
+        :param letras_incorrectas:
+        :return: Int: número de intentos.
+        """
         return len(self.ESTADOS) - 1 - len(letras_incorrectas)
 
 
